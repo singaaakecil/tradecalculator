@@ -149,7 +149,12 @@ body {
   }
 
   .card {
-    padding: 20px;
+    padding: 15px; /* Mengurangi padding kartu dari 20px menjadi 15px untuk layar kecil */
+  }
+
+  .card h2 { /* Menargetkan judul H2 di dalam kartu untuk ukuran font yang lebih kecil */
+    font-size: 1.5em; /* Mengurangi ukuran font untuk H2 di kartu pada layar kecil */
+    /* Jika perlu, Anda bisa menambahkan text-align: center; di sini */
   }
 
   .results-grid {
