@@ -53,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   gap: 20px;
   opacity: 0; /* Pastikan opacity awal 0 agar tidak langsung terlihat */
   animation: fadeIn 1.2s ease-out forwards; /* Terapkan animasi */
