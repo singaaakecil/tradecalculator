@@ -134,6 +134,10 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  body {
+    padding: 10px; /* Mengurangi padding global dari 20px menjadi 10px */
+  }
+
   .main-content {
     flex-direction: column;
   }
@@ -149,12 +153,11 @@ body {
   }
 
   .card {
-    padding: 15px; /* Mengurangi padding kartu dari 20px menjadi 15px untuk layar kecil */
+    padding: 15px; /* Tetap 15px seperti sebelumnya */
   }
 
-  .card h2 { /* Menargetkan judul H2 di dalam kartu untuk ukuran font yang lebih kecil */
-    font-size: 1.5em; /* Mengurangi ukuran font untuk H2 di kartu pada layar kecil */
-    /* Jika perlu, Anda bisa menambahkan text-align: center; di sini */
+  .card h2 {
+    font-size: 1.5em; /* Tetap 1.5em seperti sebelumnya */
   }
 
   .results-grid {
