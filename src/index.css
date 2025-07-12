@@ -2,6 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); /* Pastikan ini ada jika kamu pakai Poppins */
 
 /* General Styling */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 :root {
   /* BACKGROUNDS - Sangat gelap untuk kontras glow */
   --bg-color: #0d0c1d;        /* Hampir hitam, midnight blue */
@@ -9,7 +16,7 @@
 
   /* TEXT COLORS - Terang untuk menonjol */
   --text-color: #e0e0f0;      /* Soft off-white */
-  --muted-text-color: #9c9cbe; /* Muted grey-purple for secondary text */
+  --muted-text-color: #9c9cbe; /* Muted grey-purple-for secondary text */
 
   /* PRIMARY & ACCENT COLORS - Warna cerah untuk glow */
   --primary-color: #3b006a;   /* Deep violet for base buttons, a bit darker for active */
@@ -30,20 +37,19 @@
   --glow-intensity-medium: rgba(0, 255, 255, 0.3); /* Cahaya medium dari info */
   --glow-intensity-strong: rgba(224, 0, 255, 0.5); /* Cahaya kuat dari accent */
 }
+
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Pastikan font yang kamu pilih tetap ada atau sesuaikan */
   margin: 0;
-  padding: 15px; /* Kurangi padding untuk layar kecil agar lebih banyak ruang konten */
+  padding: 20px;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.02em; /* Menambahkan sedikit jarak antar huruf */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  /* Tambahkan overflow-x: hidden; untuk mencegah scroll horizontal jika ada elemen melebihi layar */
-  overflow-x: hidden;
 }
 
 .container {
@@ -52,9 +58,9 @@ body {
   width: 100%;
   max-width: 1200px;
   gap: 20px;
-  opacity: 0;
-  animation: fadeIn 1.2s ease-out forwards;
-  animation-delay: 0.5s;
+  opacity: 0; /* Pastikan opacity awal 0 agar tidak langsung terlihat */
+  animation: fadeIn 1.2s ease-out forwards; /* Terapkan animasi */
+  animation-delay: 0.5s; /* Sedikit tunda agar tidak terlalu cepat */
 }
 
 /* Header */
@@ -62,41 +68,50 @@ body {
   text-align: center;
   margin-bottom: 20px;
   padding: 30px 20px;
-  box-shadow: 0 0 0px var(--glow-intensity-light);
-  border-radius: 10px;
+  box-shadow: 0 0 0px var(--glow-intensity-light); 
+  border-radius: 10px; 
 }
 
 .header h1 {
   color: var(--accent-color);
   margin-bottom: 10px;
-  font-size: 2.5em; /* Akan disesuaikan oleh media query di bawah */
-  text-shadow: 0 0 10px var(--glow-intensity-medium);
+  font-size: 2.5em;
+  text-shadow: 0 0 10px var(--glow-intensity-medium); /* Menggunakan variabel glow */
 }
 
 .header p {
   color: var(--text-color);
-  font-size: 1.1em; /* Akan disesuaikan oleh media query di bawah */
+  font-size: 1.1em;
 }
 
 .header .tagline {
   font-size: 0.9em;
-  color: var(--muted-text-color);
+  color: var(--muted-text-color); /* Menggunakan variabel baru */
   margin-top: 10px;
 }
 
 /* Main Content Layout */
 .main-content {
   display: flex;
-  flex-wrap: wrap; /* Pastikan wrap aktif untuk fleksibilitas */
+  flex-wrap: wrap;
   gap: 20px;
-  justify-content: center; /* Pusat konten ketika flex-direction menjadi column */
 }
 
 .left-panel,
 .right-panel {
-  flex: 1 1 45%; /* Flex-grow, flex-shrink, flex-basis. Ini akan mencoba mengambil 45% tapi shrink jika perlu */
-  min-width: 280px; /* Minimum width yang lebih rendah agar tidak terlalu lebar di HP */
-  max-width: 100%; /* Pastikan tidak melebihi 100% dari parent */
+  flex: 1;
+  min-width: 300px;
+}
+
+.left-panel {
+  flex-basis: 35%;
+}
+
+.right-panel {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Card Styling (Ini adalah bagian umum, App.css akan menimpa untuk elemen spesifik) */
@@ -104,13 +119,13 @@ body {
   background-color: var(--card-bg-color);
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 0 20px var(--glow-intensity-light);
+  box-shadow: 0 0 20px var(--glow-intensity-light); /* Cahaya tipis */
   border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; /* Transisi untuk efek hover */
 }
 
 .card:hover {
-    box-shadow: 0 0 30px var(--glow-intensity-medium);
+    box-shadow: 0 0 30px var(--glow-intensity-medium); /* Cahaya lebih kuat saat hover */
 }
 
 .card h2 {
@@ -120,131 +135,99 @@ body {
   font-size: 1.8em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 10px;
-  text-shadow: 0 0 8px var(--glow-intensity-medium);
+  text-shadow: 0 0 8px var(--glow-intensity-medium); /* Text shadow untuk judul H2 */
 }
 
 
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
-    padding: 10px; /* Padding lebih kecil lagi untuk layar yang sangat sempit */
+    padding: 0; /* Hapus padding body sepenuhnya di mobile */
+    margin: 0; /* Pastikan margin juga 0 */
+    overflow-x: hidden; /* Tetap pertahankan ini sebagai pengaman */
+    width: 100%; /* Pastikan body mengambil 100% lebar viewport */
+    min-width: 0; /* Pastikan tidak ada min-width yang menghalangi */
   }
 
   .container {
-    gap: 15px; /* Kurangi jarak antar elemen */
-  }
-
-  .header {
-    padding: 20px 15px; /* Kurangi padding header */
-  }
-
-  .header h1 {
-    font-size: 1.8em; /* Ukuran font H1 lebih kecil */
-  }
-
-  .header p {
-    font-size: 0.9em; /* Ukuran font paragraf lebih kecil */
+    width: 100%; /* Atur lebar container menjadi 100% dari body */
+    max-width: 100%; /* Pastikan tidak melebihi 100% */
+    padding: 10px; /* Tambahkan padding langsung ke container, bukan body */
+    box-sizing: border-box; /* Pastikan container menghitung padding ke dalam width */
+    gap: 15px; /* Sesuaikan gap */
   }
 
   .main-content {
-    flex-direction: column; /* Ini sudah benar */
-    gap: 15px; /* Kurangi gap antar panel */
+    flex-direction: column;
+    gap: 15px;
   }
 
   .left-panel,
   .right-panel {
-    flex-basis: auto; /* Biarkan browser menentukan basisnya */
-    min-width: unset; /* Hapus min-width */
-    width: 100%; /* Pastikan mengambil lebar penuh */
-  }
-
-  .card {
-    padding: 15px; /* Kurangi padding card */
-  }
-
-  .results-grid {
-    grid-template-columns: 1fr; /* Sudah benar: 1 kolom di layar kecil */
-    gap: 15px; /* Kurangi gap */
-  }
-
-  /* Penyesuaian spesifik untuk elemen input dan tombol jika diperlukan */
-  .form-group input[type="number"] {
-    width: 100%; /* Pastikan input mengambil lebar penuh */
-    box-sizing: border-box; /* Sangat penting agar padding tidak menambah lebar */
-  }
-
-  /* Mengatasi jika .form-group #riskPerTrade terlalu kecil atau besar */
-  .form-group #riskPerTrade {
-    width: 60px; /* Mungkin perlu lebih kecil lagi di HP */
-    margin-left: 5px; /* Kurangi margin */
-  }
-
-  .risk-buttons {
-    flex-wrap: wrap; /* Izinkan tombol melengkung ke baris baru jika tidak muat */
-    justify-content: center; /* Tengah tombol jika melengkung */
-    gap: 8px; /* Kurangi gap antar tombol */
-  }
-
-  .risk-btn {
-    padding: 8px 12px; /* Sesuaikan padding tombol */
-    font-size: 0.8em; /* Kecilkan font tombol */
-  }
-
-  .btn-calculate {
-    font-size: 1em; /* Kecilkan font tombol calculate */
-    padding: 15px; /* Sesuaikan padding */
-  }
-
-  .result-item p {
-    font-size: 1.8em; /* Kecilkan ukuran font angka hasil */
-  }
-
-  .result-item h3 {
-    font-size: 1em; /* Kecilkan ukuran font judul hasil */
-  }
-}
-
-/* Tambahkan media query untuk layar yang lebih kecil lagi, misalnya <= 480px */
-@media (max-width: 480px) {
-  body {
-    padding: 8px; /* Padding sangat kecil untuk layar terkecil */
-  }
-
-  .container {
-    gap: 10px;
+    flex-basis: auto;
+    min-width: unset;
+    width: 100%;
   }
 
   .header {
-    padding: 15px 10px;
+    padding: 20px 10px;
+    box-shadow: none;
   }
 
   .header h1 {
-    font-size: 1.5em; /* Lebih kecil lagi */
-  }
-
-  .header p {
-    font-size: 0.8em;
+    font-size: 1.8em;
   }
 
   .card {
-    padding: 12px;
+    padding: 10px;
+    min-width: unset;
+    width: 100%;
+    box-sizing: border-box; /* Pastikan card menghitung padding ke dalam width */
   }
 
-  .risk-btn {
-    padding: 6px 10px;
-    font-size: 0.75em;
+  .card h2 {
+    font-size: 1.3em;
+    word-break: break-word; /* Biarkan teks panjang pecah */
+    overflow-wrap: break-word;
   }
 
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .result-item {
+      padding: 10px;
+      min-width: unset;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .result-item h3 {
+      font-size: 0.9em;
+  }
   .result-item p {
-    font-size: 1.5em; /* Lebih kecil lagi */
+      font-size: 1.6em;
   }
-}
 
-/* Animasi Fade-in (tetap sama) */
+  .form-group input[type="number"] {
+    width: 100%; /* Pastikan input mengambil 100% lebar yang tersedia */
+    box-sizing: border-box;
+    padding: 8px;
+  }
+
+  .form-group #riskPerTrade {
+    width: 50px;
+    margin-left: 5px;
+    padding: 6px;
+  }
+} /* <--- KURUNG KURAWAL TUTUP UNTUK @media BLOCK */
+
+/* Animasi Fade-in */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px); /* Sedikit naik dari bawah */
   }
   to {
     opacity: 1;
