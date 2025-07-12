@@ -3,9 +3,7 @@ import React from 'react';
 function TradingAssistantInfo() {
   return (
     <section className="card trading-assistant">
-      <h2>
-        Trading Assistant <span style={{ fontSize: '0.8em' }}>🙇‍♀️</span> {/* Mengurangi ukuran emoji */}
-      </h2>
+      <h2>Trading Assistant  🙇‍♀️</h2>
       <div className="entry-exit">
         <h3>Portofolio Size (USD) </h3>
         <p>
